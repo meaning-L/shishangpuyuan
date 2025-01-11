@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>濮院封面</title>
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        .full-screen {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .full-screen img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: auto;
+            height: 100%;
+            min-height: 100%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: -1;
+        }
+        .fade-in {
+            animation: fadeIn 2s ease-in-out forwards;
+            opacity: 0;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        .clickable-area {
+            position: absolute;
+            width: 10vw; /* 使用视口宽度的10%来定义点击区域的宽度和高度 */
+            height: 10vw; /* 使用视口宽度的10%来定义点击区域的高度 */
+            z-index: 1;
+            pointer-events: auto;
+            bottom: 0; /* 确保点击区域位于页面底部 */
+        }
+        .clickable-area[map-coords] {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="full-screen">
+        <img src="img/fengmian1.png">
+        <img src="img/fengmian2.png" class="fade-in">
+        <img id="fengmian3" src="img/fengmian3.png" style="left: 100%; opacity: 0;">
+        <img src="img/button.png" usemap="#image-map" alt="tuan">
+    </div>
+    <div class="clickable-area" style="left: 25%;" map-coords="2000,1500,2200,1700" onclick="location.href='';"></div>
+    <div class="clickable-area" style="left: 40%;" map-coords="2000,1500,2200,1700" onclick="location.href='北更楼介绍.html';"></div>
+    <div class="clickable-area" style="left: 50%;" map-coords="2000,1500,2200,1700" onclick="location.href='姓氏.html';"></div>
+    <div class="clickable-area" style="left: 62.5%;" map-coords="2000,1500,2200,1700" onclick="location.href='img/封面整体-14.png';"></div>
+    <map name="image-map">
+        <area shape="rect" coords="2000,1500,2200,1700" alt="Clickable Area" />
+    </map>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // 初始动画效果
+            $('#fengmian3').animate({
+                left: '50%',
+                opacity: 1
+            }, 2000, function() {
+            });
+
+            // 点击可点击区域时的处理
+            $('.clickable-area').click(function() {
+                var href = $(this).data('href');
+
+                // 跳转到指定链接
+                if (href) {
+                    window.location.href = href;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

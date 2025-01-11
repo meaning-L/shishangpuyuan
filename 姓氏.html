@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>濮院姓氏</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<link rel="stylesheet" href="css/main.css" type="text/css"> 
+		<style>
+			html,body{height:100%;}
+			body{				
+				display:flex;
+				flex-direction: column;
+			}
+			body>* {	
+				width:100%;			
+				min-width: 640px;
+				margin-top:5px;
+			}			
+			section{
+				flex:1;
+			}
+			.center-container {
+			position: relative; /* 设置为相对定位，以便内部的绝对定位元素能够以其为基准 */
+			width: 100vw; /* 容器宽度，可根据需求调整 */
+			height: 100vh; /* 容器高度，这里设置为视口高度，可根据需求调整 */
+			overflow: hidden; /* 隐藏溢出内容，确保图片不会超出容器 */
+			display: flex; /* 使用Flexbox布局 */
+			justify-content: center; /* 水平居中 */
+			align-items: center; /* 垂直居中 */
+			}
+			 
+			.centered-image {
+			max-width: 100%; /* 图片最大宽度不超过容器 */
+			max-height: 100%; /* 图片最大高度不超过容器 */
+			}
+			.img{
+				width: 100%;
+				height:100%;
+				position: fixed;  
+				top: 100px; 
+				position: relative;
+				top: auto;
+			}
+			.img1{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100vw;
+				height: 100vh;
+				background-image: url('img/background 1.jpg');
+				background-size: cover;
+				z-index: -1; 
+			}
+			.background{
+				position: absolute;
+				z-index: 1;
+			}
+			.container {  
+			    position: absolute;  
+			  }
+			  .positioned-image1{
+			    position: absolute;
+			  	opacity: 100%;
+			  	z-index: 1; 
+			  }
+			.positioned-image {
+			    position: absolute;
+				opacity: 100%;
+				z-index: 1; 
+				animation: fadeInOut 5s linear infinite;
+			}
+			@keyframes fadeInOut {
+			    0%, 100% {
+			        opacity: 0;
+			    }
+			    50% {
+			        opacity: 1;
+			    }
+			}
+			.fade-out-container {
+			    position: relative; /* 必须设置为相对定位，以便伪元素能够正确定位 */
+			    width: 300px; /* 示例宽度 */
+			    height: 200px; /* 示例高度 */
+			    overflow: hidden; /* 防止内容溢出 */
+			}
+			 
+			.fade-out-container::before {
+			    content: "";
+			    position: absolute;
+			    top: 0;
+			    left: 0;
+			    right: 0;
+			    bottom: 0;
+			    background-image: url('img/background 1.jpg');
+			    background-size: cover; /* 根据需要调整背景图片的大小 */
+			    background-position: center; /* 根据需要调整背景图片的位置 */
+			    opacity: 1; /* 初始透明度 */
+			    z-index: -1; /* 确保伪元素位于内容之后 */
+			}
+			.clickable-area {
+			    position: absolute;
+			    width: 100%;
+			    height: 100vh;
+			    z-index: 1; /* Ensure this is above the background image but below overlays */
+			    pointer-events: auto; /* Only this area should capture clicks */
+			}
+			.clickable-area[map-coords] {
+			    cursor: pointer; /* Change cursor to indicate clickable area */
+			}
+		</style>
+	</head>
+	<body>
+	<div class="center-container">
+		<img src="img/return2.png" alt="Sample Image" class="positioned-image1" style="transform: scale(0.8);right: 10px;" usemap="#image-map">
+		<img src="img/bei2.png" alt="Sample Image" class="positioned-image" style="position: absolute;" usemap="#image-map">
+		<img src="img/fu2.png" alt="Sample Image" class="positioned-image" style="position: absolute;" usemap="#image-map">
+		<img src="img/pu2.png" alt="Sample Image" class="positioned-image" style="position: absolute;" usemap="#image-map">
+		<img src="img/yan2.png" alt="Sample Image" class="positioned-image" style="position: absolute;" usemap="#image-map">
+		<img src="img/yue2.png" alt="Sample Image" class="positioned-image" style="position: absolute;" usemap="#image-map">
+		<img src="img/other.png" alt="Sample Image" class="positioned-image1" style="position: absolute;">
+		<img src="img/biaoti.png" alt="Sample Image" class="positioned-image1" style="position: absolute;transform: scale(0.9);left: -10px;">
+		<img src="img/buttom.png" alt="Sample Image" class="positioned-image1">
+		<img class="img1" src="img/ditu.png"/>
+	</div>
+	<div class="clickable-area" style="width: 50px; height:50px;top: 1000px;left: 1485px;" map-coords="2000,1500,2200,1700" onclick="location.href=' www.163.com';"></div>
+	<div class="clickable-area" style="width: 50px; height:50px;top: 480px;left: 1605px;" map-coords="2000,1500,2200,1700" onclick="location.href='https://www.baidu.com/';"></div>
+	<div class="clickable-area" style="width: 50px; height:50px;top: 690px;left: 1555px;" map-coords="2000,1500,2200,1700" onclick="location.href='https://www.baidu.com/';"></div>
+	<div class="clickable-area" style="width: 50px; height:50px;top: 1500px;left: 1720px;" map-coords="2000,1500,2200,1700" onclick="location.href='https://www.baidu.com/';"></div>
+	<div class="clickable-area" style="width: 50px; height:50px;top: 1200px;left: 2570px;" map-coords="2000,1500,2200,1700" onclick="location.href='https://www.baidu.com/';"></div>
+	<div class="clickable-area" style="width: 50px; height:50px;top: 120px;right: 10px;" map-coords="2000,1500,2200,1700" onclick="location.href='https://www.baidu.com/';"></div>
+	<map name="image-map">
+	        <area shape="rect" coords="2000,1500,2200,1700" alt="Clickable Area" />
+	</map>
+	 <script>
+	        $(document).ready(function () {
+	            var fadeImages = $('.fade-img');
+	            fadeImages.each(function (index) {
+	                var $this = $(this);
+	                setTimeout(function () {
+	                    $this.fadeIn(1000).fadeOut(1000, function () {
+	                        setInterval(function () {
+	                            $this.fadeIn(1000).fadeOut(1000);
+	                        }, 5000);
+	                    });
+	                }, index * 2000);
+	            });
+	        });
+	</script>
+	</body>
+
+</html>

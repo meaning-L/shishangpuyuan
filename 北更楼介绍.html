@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>北更楼介绍</title>
+    <style type="text/css">
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .full-screen {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .full-screen img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: auto;
+            height: 100%;
+            min-height: 100%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+        #headline {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            overflow: hidden;
+            z-index: 3;
+        }
+        #headline img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        #headline img:first-child {
+            z-index: 1;
+        }
+        #headline img:last-child {
+            z-index: 2;
+        }
+        #clickArea {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 100px;
+            height: 50px;
+            border-radius: 15px;
+            padding: 10px;
+            z-index: 5;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body id="body">
+    <div class="full-screen">
+        <img src="img/底图-02.png" id="backgroundImage"/>
+        <img src="img/返回键-02.png" class="img"/>
+    </div>
+    <div id="headline">
+        <img id="headlineImage" src="img/北更楼字-02.png" class="img"/>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var $backgroundImage = $('#backgroundImage');
+            $backgroundImage.on('load', function() {
+                var backgroundImageWidth = $backgroundImage.width();
+                var backgroundImageHeight = $backgroundImage.height();
+                $('#headline').css({
+                    width: backgroundImageWidth,
+                    height: backgroundImageHeight
+                });
+                $('#headlineImage').css({
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover'
+                });
+                $('#headlineImage').fadeTo(1800, 1);
+                var $clickArea = $('<div id="clickArea" title="点击返回"></div>');
+                $clickArea.css({
+                    position: 'absolute',
+                    top: '10px',
+                    right: '10px',
+                    width: '100px',
+                    height: '50px',
+                    borderRadius: '15px',
+                    padding: '10px',
+                    zIndex: '5',
+                    textAlign: 'center',
+                    cursor: 'pointer'
+                });
+                $('#headline').append($clickArea);
+                $clickArea.fadeIn(1800);
+            });
+            if ($backgroundImage[0].complete) {
+                var backgroundImageWidth = $backgroundImage.width();
+                var backgroundImageHeight = $backgroundImage.height();
+                $('#headline').css({
+                    width: backgroundImageWidth,
+                    height: backgroundImageHeight
+                });
+                $('#headlineImage').css({
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover'
+                });
+                $('#headlineImage').fadeTo(1800, 1);
+                var $clickArea = $('<div id="clickArea" title="点击返回"></div>');
+                $clickArea.css({
+                    position: 'absolute',
+                    top: '10px',
+                    right: '10px',
+                    width: '100px',
+                    height: '50px',
+                    borderRadius: '15px',
+                    padding: '10px',
+                    zIndex: '5',
+                    textAlign: 'center',
+                    cursor: 'pointer'
+                });
+                $('#headline').append($clickArea);
+                $clickArea.fadeIn(1800);
+            }
+            $('#headline').on('click', '#clickArea', function(event) {
+                if (!imageChanged) {
+                    window.location.href = "index.html";
+                } else {
+                    resetToInitial();
+                }
+                event.stopPropagation();
+            });
+            $('#body').click(function(event) {
+                if (!imageChanged && !$(event.target).closest('#clickArea').length) {
+                    changeImage();
+                } else if (imageChanged && !$(event.target).closest('#clickArea').length) {
+                    window.location.href = '姓氏.html';
+                }
+            });
+        });
+        var imageChanged = false; 
+        function changeImage() {
+            var $headlineImage = $('#headlineImage');
+            var $headline = $('#headline');
+            var $backgroundImage = $('#backgroundImage');
+            var backgroundImageWidth = $backgroundImage.width();
+            var backgroundImageHeight = $backgroundImage.height();
+            var $newImage = $('<img id="newHeadlineImage" class="img" src="img/矩形字底图-02.png" style="width: 100%; height: 100%; object-fit: cover; opacity: 0; z-index: 1;"/>');
+            $headline.append($newImage);
+            $newImage.fadeTo(1500, 1);
+            var $newTextImage = $('<img id="newTextImage" class="img" src="img/字-02.png" style="width: 100%; height: 100%; object-fit: cover; opacity: 0; z-index: 2;"/>');
+            $headline.append($newTextImage);
+            $newTextImage.fadeTo(1500, 1);
+            imageChanged = true;
+        }
+        function resetToInitial() {
+            var $headlineImage = $('#headlineImage');
+            var $newHeadlineImage = $('#newHeadlineImage');
+            var $newTextImage = $('#newTextImage');
+            $newHeadlineImage.remove();
+            $newTextImage.remove();
+            $headlineImage.fadeTo(1500, 1);
+            imageChanged = false;
+        }
+    </script>
+</body>
+</html>
